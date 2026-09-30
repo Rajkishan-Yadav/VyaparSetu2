@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Dashboard | VyaparSetu</title>
+
+<link rel="stylesheet" href="style.css">
+```
+
+</head>
+
+<body>
+
+```
+<header>
+
+    <div class="logo">
+        Vyapar<span>Setu</span>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#modules">Modules</a>
+        <a href="index.html">Logout</a>
+    </nav>
+
+</header>
+
+
+<section class="dashboard">
+
+    <p class="tag">VENDOR DASHBOARD</p>
+
+    <h1>Welcome to VyaparSetu 👋</h1>
+
+    <p>
+        Manage your payments and daily business easily.
+    </p>
+
+
+    <!-- Business Statistics -->
+    <div class="stats">
+
+        <div class="stat-card">
+            <p>Today's Sales</p>
+            <h2>₹2,500</h2>
+        </div>
+
+        <div class="stat-card">
+            <p>Today's Expenses</p>
+            <h2>₹1,000</h2>
+        </div>
+
+        <div class="stat-card">
+            <p>Today's Profit</p>
+            <h2>₹1,500</h2>
+        </div>
+
+    </div>
+
+
+    <!-- Vendor Details -->
+    <div class="vendor-section">
+
+        <h2>Vendor Details</h2>
+
+        <form id="vendorForm">
+
+            <div class="form-group">
+                <label for="vendorName">Vendor Name</label>
+                <input type="text" id="vendorName"
+                    placeholder="Enter vendor name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone"
+                    placeholder="Enter phone number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="businessName">Business Name</label>
+                <input type="text" id="businessName"
+                    placeholder="Enter business name" required>
+            </div>
+
+            <button type="submit" class="primary-btn">
+                Add Vendor
+            </button>
+
+        </form>
+
+        <p id="message"></p>
+
+    </div>
+
+
+    <!-- Vendor List -->
+    <div class="vendor-section">
+
+        <h2>Registered Vendors</h2>
+
+        <div id="vendorList">
+            <p>Loading vendors...</p>
+        </div>
+
+    </div>
+
+
+    <!-- Modules -->
+    <h2 class="module-title">Explore Modules</h2>
+
+
+    <div class="module-container">
+
+        <!-- Module 1 -->
+        <div class="module">
+
+            <div class="icon">₹</div>
+
+            <h3>Module 1</h3>
+
+            <h2>Digital Payments</h2>
+
+            <p>
+                Learn about UPI, QR payments and digital
+                payment safety.
+            </p>
+
+            <a href="module1.html" class="primary-btn">
+                Open Module
+            </a>
+
+        </div>
+
+
+        <!-- Module 2 -->
+        <div class="module">
+
+            <div class="icon">📊</div>
+
+            <h3>Module 2</h3>
+
+            <h2>Business Management</h2>
+
+            <p>
+                Record sales, expenses and calculate
+                your business profit.
+            </p>
+
+            <a href="module2.html" class="primary-btn">
+                Open Module
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>

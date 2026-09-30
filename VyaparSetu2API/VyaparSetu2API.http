@@ -1,0 +1,6 @@
+@VyaparSetu2API_HostAddress = http://localhost:5062
+
+GET {{VyaparSetu2API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

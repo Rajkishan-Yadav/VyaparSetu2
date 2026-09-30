@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Business Management | VyaparSetu</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        Vyapar<span>Setu</span>
+    </div>
+
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="index.html">Logout</a>
+    </nav>
+
+</header>
+
+
+<section class="dashboard">
+
+    <p class="tag">BUSINESS MANAGEMENT</p>
+
+    <h1>Manage Your Business</h1>
+
+    <p>
+        Record your daily sales and expenses and calculate your profit.
+    </p>
+
+
+    <!-- Summary -->
+
+    <div class="stats">
+
+        <div class="stat-card">
+            <p>Total Sales</p>
+            <h2 id="totalSales">₹0</h2>
+        </div>
+
+        <div class="stat-card">
+            <p>Total Expenses</p>
+            <h2 id="totalExpenses">₹0</h2>
+        </div>
+
+        <div class="stat-card">
+            <p>Total Profit</p>
+            <h2 id="totalProfit">₹0</h2>
+        </div>
+
+    </div>
+
+
+    <!-- Forms -->
+
+    <div class="module-container">
+
+
+        <!-- Sales -->
+
+        <div class="module">
+
+            <div class="icon">₹</div>
+
+            <h2>Add Sale</h2>
+
+            <p>Enter the amount of today's sale.</p>
+
+            <input
+                type="number"
+                id="saleAmount"
+                placeholder="Enter sale amount"
+            >
+
+            <button class="btn" onclick="addSale()">
+                Add Sale
+            </button>
+
+        </div>
+
+
+        <!-- Expenses -->
+
+        <div class="module">
+
+            <div class="icon">−</div>
+
+            <h2>Add Expense</h2>
+
+            <p>Enter your business expense.</p>
+
+            <input
+                type="number"
+                id="expenseAmount"
+                placeholder="Enter expense amount"
+            >
+
+            <button class="btn" onclick="addExpense()">
+                Add Expense
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <br>
+
+
+    <a href="dashboard.html" class="primary-btn">
+        ← Back to Dashboard
+    </a>
+
+</section>
+
+
+<script>
+
+    let sales = 0;
+    let expenses = 0;
+
+
+    function addSale() {
+
+        const amount = Number(
+            document.getElementById("saleAmount").value
+        );
+
+        if (amount <= 0) {
+            alert("Please enter a valid sale amount.");
+            return;
+        }
+
+        sales += amount;
+
+        updateDashboard();
+
+        document.getElementById("saleAmount").value = "";
+
+        alert("Sale added successfully!");
+    }
+
+
+    function addExpense() {
+
+        const amount = Number(
+            document.getElementById("expenseAmount").value
+        );
+
+        if (amount <= 0) {
+            alert("Please enter a valid expense amount.");
+            return;
+        }
+
+        expenses += amount;
+
+        updateDashboard();
+
+        document.getElementById("expenseAmount").value = "";
+
+        alert("Expense added successfully!");
+    }
+
+
+    function updateDashboard() {
+
+        const profit = sales - expenses;
+
+        document.getElementById("totalSales").innerText =
+            "₹" + sales;
+
+        document.getElementById("totalExpenses").innerText =
+            "₹" + expenses;
+
+        document.getElementById("totalProfit").innerText =
+            "₹" + profit;
+    }
+
+</script>
+
+</body>
+</html>

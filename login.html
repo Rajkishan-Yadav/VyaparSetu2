@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | VyaparSetu</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="login-page">
+
+<div class="login-container">
+
+    <div class="logo">
+        Vyapar<span>Setu</span>
+    </div>
+
+    <h1>Welcome Back</h1>
+
+    <p>Login to manage your digital business.</p>
+
+    <form onsubmit="loginUser(event)">
+
+        <label>Mobile Number</label>
+        <input
+            type="text"
+            id="mobile"
+            placeholder="Enter mobile number"
+            required
+        >
+
+        <label>Password</label>
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter password"
+            required
+        >
+
+        <button type="submit" class="btn">
+            Login
+        </button>
+
+    </form>
+
+    <p class="back">
+        <a href="index.html">← Back to Home</a>
+    </p>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
