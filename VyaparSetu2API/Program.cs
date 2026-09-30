@@ -49,6 +49,39 @@ app.MapPost("/api/vendors", async (Vendor vendor, VyaparSetuDbContext db) =>
 
     return Results.Ok(vendor);
 });
+// Update Vendor
+app.MapPut("/api/vendors/{id}", async (int id, Vendor updatedVendor, VyaparSetuDbContext db) =>
+{
+    var vendor = await db.Vendors.FindAsync(id);
+
+    if (vendor == null)
+    {
+        return Results.NotFound("Vendor not found");
+    }
+
+    vendor.VendorName = updatedVendor.VendorName;
+    vendor.Phone = updatedVendor.Phone;
+    vendor.BusinessName = updatedVendor.BusinessName;
+
+    await db.SaveChangesAsync();
+
+    return Results.Ok(vendor);
+});
+// Delete Vendor
+app.MapDelete("/api/vendors/{id}", async (int id, VyaparSetuDbContext db) =>
+{
+    var vendor = await db.Vendors.FindAsync(id);
+
+    if (vendor == null)
+    {
+        return Results.NotFound("Vendor not found");
+    }
+
+    db.Vendors.Remove(vendor);
+    await db.SaveChangesAsync();
+
+    return Results.Ok("Vendor deleted successfully");
+});
 // Get all Transactions
 app.MapGet("/api/transactions", async (VyaparSetuDbContext db) =>
 {

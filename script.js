@@ -1,3 +1,4 @@
+
 // API URL
 const API_URL = "http://localhost:5062/api/vendors";
 
@@ -41,9 +42,22 @@ async function loadVendors() {
 
             vendorCard.innerHTML = `
                 <h3>${vendor.vendorName}</h3>
+
                 <p><strong>Phone:</strong> ${vendor.phone || "N/A"}</p>
+
                 <p><strong>Business:</strong> ${vendor.businessName || "N/A"}</p>
+
                 <p><strong>Vendor ID:</strong> ${vendor.vendorId}</p>
+
+                <div class="vendor-actions">
+                    <button onclick="editVendor(${vendor.vendorId})">
+                        Edit
+                    </button>
+
+                    <button onclick="deleteVendor(${vendor.vendorId})">
+                        Delete
+                    </button>
+                </div>
             `;
 
             vendorList.appendChild(vendorCard);
@@ -119,16 +133,13 @@ async function addVendor(event) {
         const newVendor = await response.json();
 
 
-        // Success message
         message.innerText =
             `Vendor added successfully! Vendor ID: ${newVendor.vendorId}`;
 
 
-        // Clear form
         document.getElementById("vendorForm").reset();
 
 
-        // Reload vendor list
         loadVendors();
 
 
@@ -138,6 +149,120 @@ async function addVendor(event) {
 
         message.innerText =
             "Unable to add vendor. Please make sure the API is running.";
+
+    }
+
+}
+
+
+// ================================
+// EDIT VENDOR
+// ================================
+async function editVendor(id) {
+
+    const vendorName =
+        prompt("Enter new vendor name:");
+
+    if (vendorName === null) {
+        return;
+    }
+
+    const phone =
+        prompt("Enter new phone number:");
+
+    if (phone === null) {
+        return;
+    }
+
+    const businessName =
+        prompt("Enter new business name:");
+
+    if (businessName === null) {
+        return;
+    }
+
+
+    try {
+
+        const response = await fetch(`${API_URL}/${id}`, {
+
+            method: "PUT",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                vendorName: vendorName.trim(),
+                phone: phone.trim(),
+                businessName: businessName.trim()
+            })
+
+        });
+
+
+        if (!response.ok) {
+
+            throw new Error("Failed to update vendor");
+
+        }
+
+
+        alert("Vendor updated successfully!");
+
+        loadVendors();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Unable to update vendor.");
+
+    }
+
+}
+
+
+// ================================
+// DELETE VENDOR
+// ================================
+async function deleteVendor(id) {
+
+    const confirmDelete =
+        confirm("Are you sure you want to delete this vendor?");
+
+    if (!confirmDelete) {
+        return;
+    }
+
+
+    try {
+
+        const response = await fetch(`${API_URL}/${id}`, {
+
+            method: "DELETE"
+
+        });
+
+
+        if (!response.ok) {
+
+            throw new Error("Failed to delete vendor");
+
+        }
+
+
+        alert("Vendor deleted successfully!");
+
+        loadVendors();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Unable to delete vendor.");
 
     }
 
@@ -164,3 +289,4 @@ if (vendorForm) {
 // LOAD VENDORS WHEN DASHBOARD OPENS
 // ================================
 loadVendors();
+
