@@ -1,0 +1,30 @@
+# .NET build files
+**/bin/
+**/obj/
+
+# Visual Studio
+.vs/
+*.user
+*.userosscache
+*.suo
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# ASP.NET local settings
+appsettings.Local.json
+
+# Environment / secrets
+.env
+.env.*
+
+# Database files
+*.mdf
+*.ldf
